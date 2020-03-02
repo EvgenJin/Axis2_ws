@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://evg_axis_ws/com/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax21="http://evg_axis_ws.com/xsd" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://evg_axis_ws/com/" targetNamespace="http://evg_axis_ws/com/">
+    <wsdl:types>
+        <xs:schema xmlns:ax22="http://evg_axis_ws.com/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://evg_axis_ws/com/xsd">
+            <xs:import namespace="http://evg_axis_ws.com/xsd"/>
+            <xs:element name="hello23">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="hello23Response">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getPerson">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getPersonResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax22:Person"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://evg_axis_ws.com/xsd">
+            <xs:complexType name="Person">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="address" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="age" type="xs:int"/>
+                    <xs:element minOccurs="0" name="id" type="xs:int"/>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getPersonRequest">
+        <wsdl:part name="parameters" element="ns:getPerson"/>
+    </wsdl:message>
+    <wsdl:message name="getPersonResponse">
+        <wsdl:part name="parameters" element="ns:getPersonResponse"/>
+    </wsdl:message>
+    <wsdl:message name="hello23Request">
+        <wsdl:part name="parameters" element="ns:hello23"/>
+    </wsdl:message>
+    <wsdl:message name="hello23Response">
+        <wsdl:part name="parameters" element="ns:hello23Response"/>
+    </wsdl:message>
+    <wsdl:portType name="PersonDBServicePortType">
+        <wsdl:operation name="getPerson">
+            <wsdl:input message="tns:getPersonRequest" wsaw:Action="urn:getPerson"/>
+            <wsdl:output message="tns:getPersonResponse" wsaw:Action="urn:getPersonResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="hello23">
+            <wsdl:input message="tns:hello23Request" wsaw:Action="urn:hello23"/>
+            <wsdl:output message="tns:hello23Response" wsaw:Action="urn:hello23Response"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="PersonDBServiceSoap11Binding" type="tns:PersonDBServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getPerson">
+            <soap:operation soapAction="urn:getPerson" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="hello23">
+            <soap:operation soapAction="urn:hello23" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="PersonDBServiceSoap12Binding" type="tns:PersonDBServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getPerson">
+            <soap12:operation soapAction="urn:getPerson" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="hello23">
+            <soap12:operation soapAction="urn:hello23" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="PersonDBServiceHttpBinding" type="tns:PersonDBServicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="getPerson">
+            <http:operation location="getPerson"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="hello23">
+            <http:operation location="hello23"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="PersonDBService">
+        <wsdl:port name="PersonDBServiceHttpSoap11Endpoint" binding="tns:PersonDBServiceSoap11Binding">
+            <soap:address location="http://localhost:8080/axis2/services/PersonDBService"/>
+        </wsdl:port>
+        <wsdl:port name="PersonDBServiceHttpSoap12Endpoint" binding="tns:PersonDBServiceSoap12Binding">
+            <soap12:address location="http://localhost:8080/axis2/services/PersonDBService"/>
+        </wsdl:port>
+        <wsdl:port name="PersonDBServiceHttpEndpoint" binding="tns:PersonDBServiceHttpBinding">
+            <http:address location="http://localhost:8080/axis2/services/PersonDBService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

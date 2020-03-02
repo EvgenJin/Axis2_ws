@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<axis2 xmlns="http://www.netbeans.org/ns/axis2/1">
+    <service name="PersonDBService">
+        <service-class>com.evg_axis_ws.PersonDBService</service-class>
+        <generate-wsdl targetNamespace="http://evg_axis_ws/com/" schemaNamespace="http://evg_axis_ws/com/xsd"/>
+    </service>
+</axis2>

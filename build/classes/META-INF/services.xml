@@ -1,0 +1,11 @@
+<service name="DBSampleService" class="com.evg_axis_ws.DBSampleServiceLifeCycle">
+    <description>Exposing a DB as a Web Service</description>
+    <messageReceivers>
+        <!--<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-only" class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>-->
+        <!--<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out" class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>-->
+        
+        <messageReceiver mep="http://www.w3.org/ns/wsdl/in-only" class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" />
+        <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>         
+    </messageReceivers>
+    <parameter name="ServiceClass">com.evg_axis_ws.PersonDBService</parameter>
+</service>
